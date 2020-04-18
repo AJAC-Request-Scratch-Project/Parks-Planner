@@ -1,5 +1,6 @@
 const express = require('express');
-const itineraryController = require('../controllers/googleMapsController.js');
+const googleMapsController = require('../controllers/googleMapsController.js');
+const npsController = require('../controllers/npsController.js');
 const router = express.Router();
 
 // loads the map and park pin points
