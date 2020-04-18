@@ -1,9 +1,11 @@
-import { combineReducsers } from 'redux';
+import { combineReducers } from 'redux';
 
-// Import some_reducers from '..............';
+import parkReducer from './parkReducer.js';
 
-
-// Combine reducers (probably just one).
+const reducers = combineReducers({
+  // if we had other reducers, they would go here
+  park: parkReducer,
+});
 
 
 export default reducers;
