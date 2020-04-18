@@ -1,0 +1,43 @@
+{
+  "name": "parks-planner",
+  "description": "A travel planner for National Parks in the US",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/server.js",
+    "build": "webpack",
+    "dev": "NODE_ENV=development nodemon server/server.js & webpack-dev-server --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AJAC-Request-Scratch-Project/Parks-Planner.git"
+  },
+  "author": "AJAC",
+  "license": "ISC",
+  "homepage": "",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "custom-env": "^2.0.1",
+    "express": "^4.17.1",
+    "google-maps-react": "^2.0.2",
+    "pg": "^8.0.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.2",
+    "nodemon": "^2.0.3",
+    "sass": "^1.26.3",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.4",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
