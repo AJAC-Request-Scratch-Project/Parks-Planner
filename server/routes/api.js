@@ -1,14 +1,18 @@
 const express = require('express');
-const googleMapsController = require('../controllers/googleMapsController.js');
 const npsController = require('../controllers/npsController.js');
 const router = express.Router();
 
-// loads the map and park pin points
-router.get('/', googleMapsController.getMap, (req, res)=>{
-    res.status(200).json();
+// connects with SQL database to serve client/front-end
+  // res is array of objects with name, parkCode, lat, and long
+
+router.get('/', npsController.getParkData, (req, res)=>{
+    res.status(200).json(res.locals.parksData);
 })
 
-// req returns clicked park pin point and requests weather information for selected park pin point
-router.get('/', npsController.getParkWeather, (req, res)=>{
-    res.sendStatus(200);
+// onclick on client side request for single park info 
+router.get('/park', npsController.getOnePark, (req, res)=>{
+    res.status(200).json()
 })
+
+
+module.exports = router;
