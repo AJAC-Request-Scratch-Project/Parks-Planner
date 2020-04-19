@@ -4,8 +4,8 @@ import thunk from 'redux-thunk'
 import { connect } from 'react-redux';
 
 const initialState = {
-    toggle: true,
-    parksList: [{name:'test', latitude: 69, longitude: -96}],
+    toggle: false,
+    parksList: [],
     //lat: 37.7785, lng: -122.4056
     // name: '',
     // position: {
@@ -21,7 +21,7 @@ const parkReducer = (state = initialState, action)=>{
   switch(action.type) {
     case types.TOGGLE:
       let toggle = !state.toggle;
-      // console.log('state.toggle in Park Reducer:', state.toggle)
+
       return {
       ...state,
       toggle
@@ -29,12 +29,12 @@ const parkReducer = (state = initialState, action)=>{
         
     case types.MARKER:
 
-      const markerData = action.payload.markerData;
+      const markerData = action.payload;
 
       const parksList = [];
 
       for (let element of markerData) {
-          
+
            const markerState = { 
               name: element.name,
               position: {
