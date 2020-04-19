@@ -12,7 +12,8 @@ const mapStyles = {
 }
 
 const mapStateToProps = state => ({
-  parksList: state.park.parksList
+  parksList: state.park.parksList,
+  toggle: state.park.toggle,
 })
 
 
@@ -32,24 +33,31 @@ class MapContainer extends Component {
   }
 
   render () {
-    // console.log('this.props.parksList:', this.props.parksList)
+
     // create empty array for markers
     const markersArray = []
     //loop through state.parksList to get all relevant info for marker component
+
     for(let i = 0; i < this.props.parksList.length; i++){
+      console.log(this.props.parksList)
       markersArray.push(<Marker
         key={'marker'+i}
         name={this.props.parksList[i].name}
         position={{
-        lat: this.props.parksList[i].latitude,
-        lng: this.props.parksList[i].longitude,
+        lat: this.props.parksList[i].position.lat,
+        lng: this.props.parksList[i].position.long,
         }}
         />)
     }
 
     //push each component into above array
     
-    return (
+    if (!this.props.toggle){
+      return (
+        <h1>Loading..</h1>
+      )
+    } else {
+      return (
   // Google Map Documentation ------------------------------------
       // Map Properties from Google ----------
       <Map 
@@ -64,8 +72,9 @@ class MapContainer extends Component {
       {markersArray}
 
       </Map>
-    )
+      )
   }  
+}
 }
 
 const Connected = connect(mapStateToProps, mapDispatchToProps)(MapContainer);

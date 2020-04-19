@@ -18,8 +18,8 @@ export const setMarker = (markerData) =>({
 export const fetchMarkers = () => {
     return (dispatch) => {
         return axios.get('/getparks')
-        .then(({ markerData }) => {
-            dispatch(setMarker(markerData));
+        .then(( markerData ) => {
+            dispatch(setMarker(markerData.data));
         })
     }
 }
