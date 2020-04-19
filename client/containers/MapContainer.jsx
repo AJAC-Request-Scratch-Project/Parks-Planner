@@ -11,8 +11,14 @@ const mapStyles = {
   height: '70%'
 }
 
+const mapStateToProps = state => ({
+  parksList: state.park.parksList
+})
+
+
 const mapDispatchToProps = dispatch => ({
-  toggle: ()=> dispatch(actions.toggle())
+  toggle: ()=> dispatch(actions.toggle()),
+  fetchMarkers: () => dispatch(actions.fetchMarkers()),
 })
 
 class MapContainer extends Component {
@@ -21,13 +27,28 @@ class MapContainer extends Component {
   }
 
   componentDidMount(){
-    console.log('componentDidMount')
-    this.props.toggle();  
+    this.props.toggle();
+    this.props.fetchMarkers();
   }
 
   render () {
-    console.log('mapcontainer?')
-    console.log("this.props:", this.props)
+    // console.log('this.props.parksList:', this.props.parksList)
+    // create empty array for markers
+    const markersArray = []
+    //loop through state.parksList to get all relevant info for marker component
+    for(let i = 0; i < this.props.parksList.length; i++){
+      markersArray.push(<Marker
+        key={'marker'+i}
+        name={this.props.parksList[i].name}
+        position={{
+        lat: this.props.parksList[i].latitude,
+        lng: this.props.parksList[i].longitude,
+        }}
+        />)
+    }
+
+    //push each component into above array
+    
     return (
   // Google Map Documentation ------------------------------------
       // Map Properties from Google ----------
@@ -40,14 +61,14 @@ class MapContainer extends Component {
         }}
         zoom={4}
       >
-        {/* <Marker /> */}
+      {markersArray}
 
       </Map>
     )
   }  
 }
 
-const Connected = connect(null, mapDispatchToProps)(MapContainer);
+const Connected = connect(mapStateToProps, mapDispatchToProps)(MapContainer);
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyCIo2nyEB-966331r5Ux-zO_lKIm7eW5fU'
