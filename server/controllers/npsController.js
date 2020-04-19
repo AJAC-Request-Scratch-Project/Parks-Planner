@@ -5,37 +5,45 @@ const npsController = {};
 
 const npsAPIKey = 'ZhgoS526AhMD5dmAvob2YIx2hk8XqLGeIG1NgMzF';
 
-npsController.getParkData = (req, res, next)=>{
-  const getPark = 'SELECT * FROM park';
+npsController.getParkData = (req, res, next) => {
+  const getPark = `SELECT * FROM park;`
 
   db.query(getPark)
-  .then(parksData=>{
-    console.log(parksData.rows)
-    res.locals.parksData = parksData.rows;
-    next();
-  })
-  .catch(err => next('error in getPark middleware'))
+    .then(parksData => {
+      res.locals.parksData = parksData.rows;
+      next();
+    })
+    .catch(err => next('error in getPark middleware'))
 
 }
 
-npsController.getOnePark = (req, res, next)=>{
+npsController.getOnePark = (req, res, next) => {
 
   const url = 'https://developer.nps.gov/api/v1/parks';
-  // const code = req body property that contains parkCode
+  const onePark = req.query.code;
 
   axios.get(url,
     {
       params: {
-        parkCode: 'arch',
+        parkCode: onePark,
         api_key: npsAPIKey,
       }
     })
     .then(parkData => {
-      // ask team what they want from data
+      // Info is a large object from the National Park Service with all of the available information
       let info = parkData.data.data[0];
-      console.log(info)
 
-      res.locals.onePark = info;
+      // parkObj is the object to hl oly the selected data that
+      // will render on the front end, can be adjusted by adding more 
+      // information from "info" above
+      const parkObj = {}
+      parkObj.fullName = info.fullName;
+      parkObj.description = info.description;
+      parkObj.weather = info.weatherInfo;
+      parkObj.images = info.images[0].url;
+
+      // console.log('npsController - parkObj:', parkObj);
+      res.locals.onePark = parkObj;
       next();
     })
     .catch(err => {
@@ -95,19 +103,19 @@ module.exports = npsController;
   //   const insertPark = 
   //   `INSERT INTO park(name, code, latitude, longitude)
   //   VALUES($1, $2, $3, $4)`
-    
+
   //   for (let el of parksArray){
   //     let park = [ el.name, el.parkCode, el.latitude, el.longitude ]
-  
+
   //     db.query(insertPark, park)
   //     .then(added => {
   //       console.log(added)
   //     })
   //     .catch(err=>console.log(err))
   //   }
-  
+
   // }
-  
+
   // const parksArray = 
   // [
   //   {

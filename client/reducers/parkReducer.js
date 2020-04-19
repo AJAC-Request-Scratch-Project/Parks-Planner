@@ -4,29 +4,28 @@ import thunk from 'redux-thunk'
 import { connect } from 'react-redux';
 
 const initialState = {
-    toggle: false,
-    parksList: [],
-    //lat: 37.7785, lng: -122.4056
-    // name: '',
-    // position: {
-    //     lat: 0,
-    //     long: 0,
-    // },
-    // weather: '', // stretch features
-    // description: '', // stretch features
+  // State for all Markers
+  toggle: false,
+  parksList: [],
+  // State for Individual City
+  showPark: false,
+  fullName: '',
+  description: '',
+  weather: '',
+  images: ''
 }
 
-const parkReducer = (state = initialState, action)=>{
+const parkReducer = (state = initialState, action) => {
 
-  switch(action.type) {
+  switch (action.type) {
     case types.TOGGLE:
       let toggle = !state.toggle;
 
       return {
-      ...state,
-      toggle
+        ...state,
+        toggle
       };
-        
+
     case types.MARKER:
 
       const markerData = action.payload;
@@ -34,28 +33,46 @@ const parkReducer = (state = initialState, action)=>{
       const parksList = [];
 
       for (let element of markerData) {
-
-           const markerState = { 
-              name: element.name,
-              position: {
-                  lat: element.latitude,
-                  long: element.longitude,
-              },
-              // weather: element.weather,
-              // description: element.description,
-            }
-            parksList.push(markerState) ;
+        const markerState = {
+          name: element.name,
+          code: element.code,
+          position: {
+            lat: element.latitude,
+            long: element.longitude,
+          },
+        }
+        parksList.push(markerState);
       }
 
 
       return {
-      ...state,
-      parksList
-    }
+        ...state,
+        parksList
+      }
+
+    // specificPark render reducer
+    // get data from fetch request to manipulate our state
+    // also toggle?
+    case types.PARKINFO:
+      const parkData = action.payload
+      const fullName = parkData.fullName;
+      const description = parkData.description;
+      const weather = parkData.weather;
+      const images = parkData.images;
+      let showPark = true;
+
+      return {
+        ...state,
+        fullName,
+        description,
+        weather,
+        images,
+        showPark
+      }
 
     default:
       return state
-    }
+  }
 
 }
 
