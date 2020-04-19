@@ -21,7 +21,7 @@ npsController.getParkData = (req, res, next)=>{
 npsController.getOnePark = (req, res, next)=>{
 
   const url = 'https://developer.nps.gov/api/v1/parks';
-  // const code = req body property that contains parkCode
+  // const code = req body property that contains code
 
   axios.get(url,
     {
@@ -112,301 +112,301 @@ module.exports = npsController;
   // [
   //   {
   //     name: 'Anacostia Park',
-  //     parkCode: 'anac',
+  //     code: 'anac',
   //     latitude: 38.89644397,
   //     longitude: -76.96314236
   //   },
   //   {
   //     name: 'Appalachian National Scenic Trail',
-  //     parkCode: 'appa',
+  //     code: 'appa',
   //     latitude: 40.41029575,
   //     longitude: -76.4337548
   //   },
   //   {
   //     name: 'Arches National Park',
-  //     parkCode: 'arch',
+  //     code: 'arch',
   //     latitude: 38.72261844,
   //     longitude: -109.5863666
   //   },
   //   {
   //     name: 'Badlands National Park',
-  //     parkCode: 'badl',
+  //     code: 'badl',
   //     latitude: 43.68584846,
   //     longitude: -102.482942
   //   },
   //   {
   //     name: 'Big Bend National Park',
-  //     parkCode: 'bibe',
+  //     code: 'bibe',
   //     latitude: 29.29817767,
   //     longitude: -103.2297897
   //   },
   //   {
   //     name: 'Black Canyon Of The Gunnison National Park',
-  //     parkCode: 'blca',
+  //     code: 'blca',
   //     latitude: 38.57779869,
   //     longitude: -107.7242756
   //   },
   //   {
   //     name: 'Bryce Canyon National Park',
-  //     parkCode: 'brca',
+  //     code: 'brca',
   //     latitude: 37.58399144,
   //     longitude: -112.1826689
   //   },
   //   {
   //     name: 'Canyonlands National Park',
-  //     parkCode: 'cany',
+  //     code: 'cany',
   //     latitude: 38.24555783,
   //     longitude: -109.8801624
   //   },
   //   {
   //     name: 'Carlsbad Caverns National Park',
-  //     parkCode: 'cave',
+  //     code: 'cave',
   //     latitude: 32.14089463,
   //     longitude: -104.5529688
   //   },
   //   {
   //     name: 'Constitution Gardens',
-  //     parkCode: 'coga',
+  //     code: 'coga',
   //     latitude: 38.8909354,
   //     longitude: -77.04409306
   //   },
   //   {
   //     name: 'Crater Lake National Park',
-  //     parkCode: 'crla',
+  //     code: 'crla',
   //     latitude: 42.94065854,
   //     longitude: -122.1338414
   //   },
   //   {
   //     name: 'Cuyahoga Valley National Park',
-  //     parkCode: 'cuva',
+  //     code: 'cuva',
   //     latitude: 41.26093905,
   //     longitude: -81.57116722
   //   },
   //   {
   //     name: 'Dry Tortugas National Park',
-  //     parkCode: 'drto',
+  //     code: 'drto',
   //     latitude: 24.628741,
   //     longitude: -82.87319
   //   },
   //   {
   //     name: 'Everglades National Park',
-  //     parkCode: 'ever',
+  //     code: 'ever',
   //     latitude: 25.37294225,
   //     longitude: -80.88200301
   //   },
   //   {
   //     name: "Ford's Theatre",
-  //     parkCode: 'foth',
+  //     code: 'foth',
   //     latitude: 38.89668819,
   //     longitude: -77.02577944
   //   },
   //   {
   //     name: 'Fort Frederica National Monument',
-  //     parkCode: 'fofr',
+  //     code: 'fofr',
   //     latitude: 31.2214699,
   //     longitude: -81.39452014
   //   },
   //   {
   //     name: 'Gates Of The Arctic National Park & Preserve',
-  //     parkCode: 'gaar',
+  //     code: 'gaar',
   //     latitude: 67.75961636,
   //     longitude: -153.2917758
   //   },
   //   {
   //     name: 'Gateway Arch National Park',
-  //     parkCode: 'jeff',
+  //     code: 'jeff',
   //     latitude: 38.6258069,
   //     longitude: -90.1892508
   //   },
   //   {
   //     name: 'Glacier Bay National Park & Preserve',
-  //     parkCode: 'glba',
+  //     code: 'glba',
   //     latitude: 58.80086718,
   //     longitude: -136.8407579
   //   },
   //   {
   //     name: 'Glacier National Park',
-  //     parkCode: 'glac',
+  //     code: 'glac',
   //     latitude: 48.68414678,
   //     longitude: -113.8009306
   //   },
   //   {
   //     name: 'Glen Echo Park',
-  //     parkCode: 'glec',
+  //     code: 'glec',
   //     latitude: 38.96912315,
   //     longitude: -77.14012206
   //   },
   //   {
   //     name: 'Great Basin National Park',
-  //     parkCode: 'grba',
+  //     code: 'grba',
   //     latitude: 38.94617378,
   //     longitude: -114.2579782
   //   },
   //   {
   //     name: 'Great Sand Dunes National Park & Preserve',
-  //     parkCode: 'grsa',
+  //     code: 'grsa',
   //     latitude: 37.79256812,
   //     longitude: -105.5919572
   //   },
   //   {
   //     name: 'Guadalupe Mountains National Park',
-  //     parkCode: 'gumo',
+  //     code: 'gumo',
   //     latitude: 31.92304462,
   //     longitude: -104.885527
   //   },
   //   {
   //     name: 'Hot Springs National Park',
-  //     parkCode: 'hosp',
+  //     code: 'hosp',
   //     latitude: 34.52414366,
   //     longitude: -93.06332936
   //   },
   //   {
   //     name: 'Indiana Dunes National Park',
-  //     parkCode: 'indu',
+  //     code: 'indu',
   //     latitude: 41.63765525,
   //     longitude: -87.09647445
   //   },
   //   {
   //     name: 'Jewel Cave National Monument',
-  //     parkCode: 'jeca',
+  //     code: 'jeca',
   //     latitude: 43.73102945,
   //     longitude: -103.829994
   //   },
   //   {
   //     name: 'John Muir National Historic Site',
-  //     parkCode: 'jomu',
+  //     code: 'jomu',
   //     latitude: 37.9828422,
   //     longitude: -122.1326097
   //   },
   //   {
   //     name: 'Kenai Fjords National Park',
-  //     parkCode: 'kefj',
+  //     code: 'kefj',
   //     latitude: 59.81804414,
   //     longitude: -150.106502
   //   },
   //   {
   //     name: 'Lassen Volcanic National Park',
-  //     parkCode: 'lavo',
+  //     code: 'lavo',
   //     latitude: 40.49354575,
   //     longitude: -121.4075993
   //   },
   //   {
   //     name: 'Lower Delaware National Wild and Scenic River',
-  //     parkCode: 'lode',
+  //     code: 'lode',
   //     latitude: NaN,
   //     longitude: NaN
   //   },
   //   {
   //     name: 'Maine Acadian Culture',
-  //     parkCode: 'maac',
+  //     code: 'maac',
   //     latitude: 47.2831115723,
   //     longitude: -68.4110870361
   //   },
   //   {
   //     name: 'Mammoth Cave National Park',
-  //     parkCode: 'maca',
+  //     code: 'maca',
   //     latitude: 37.19760458,
   //     longitude: -86.13090198
   //   },
   //   {
   //     name: 'Missouri National Recreational River',
-  //     parkCode: 'mnrr',
+  //     code: 'mnrr',
   //     latitude: 42.7882189,
   //     longitude: -97.59077822
   //   },
   //   {
   //     name: 'Mount Rainier National Park',
-  //     parkCode: 'mora',
+  //     code: 'mora',
   //     latitude: 46.86075416,
   //     longitude: -121.7043885
   //   },
   //   {
   //     name: 'National Parks of New York Harbor',
-  //     parkCode: 'npnh',
+  //     code: 'npnh',
   //     latitude: 40.6631915953388,
   //     longitude: -74.0451049804688
   //   },
   //   {
   //     name: 'New Orleans Jazz National Historical Park',
-  //     parkCode: 'jazz',
+  //     code: 'jazz',
   //     latitude: 29.96303129,
   //     longitude: -90.06749669
   //   },
   //   {
   //     name: 'Ozark National Scenic Riverways',
-  //     parkCode: 'ozar',
+  //     code: 'ozar',
   //     latitude: 37.13968894,
   //     longitude: -91.25709817
   //   },
   //   {
   //     name: 'Petrified Forest National Park',
-  //     parkCode: 'pefo',
+  //     code: 'pefo',
   //     latitude: 34.98387664,
   //     longitude: -109.7877678
   //   },
   //   {
   //     name: 'Redwood National and State Parks',
-  //     parkCode: 'redw',
+  //     code: 'redw',
   //     latitude: 41.37237268,
   //     longitude: -124.0318129
   //   },
   //   {
   //     name: 'Rocky Mountain National Park',
-  //     parkCode: 'romo',
+  //     code: 'romo',
   //     latitude: 40.3556924,
   //     longitude: -105.6972879
   //   },
   //   {
   //     name: 'Sequoia & Kings Canyon National Parks',
-  //     parkCode: 'seki',
+  //     code: 'seki',
   //     latitude: 36.71277299,
   //     longitude: -118.587429
   //   },
   //   {
   //     name: 'Theodore Roosevelt National Park',
-  //     parkCode: 'thro',
+  //     code: 'thro',
   //     latitude: 47.17777274,
   //     longitude: -103.4300083
   //   },
   //   {
   //     name: 'Virgin Islands National Park',
-  //     parkCode: 'viis',
+  //     code: 'viis',
   //     latitude: 18.34279656,
   //     longitude: -64.74194451
   //   },
   //   {
   //     name: 'Whiskeytown National Recreation Area',
-  //     parkCode: 'whis',
+  //     code: 'whis',
   //     latitude: 40.61359941,
   //     longitude: -122.6022657
   //   },
   //   {
   //     name: 'White Sands National Park',
-  //     parkCode: 'whsa',
+  //     code: 'whsa',
   //     latitude: 32.77907858,
   //     longitude: -106.3333461
   //   },
   //   {
   //     name: 'Wolf Trap National Park for the Performing Arts',
-  //     parkCode: 'wotr',
+  //     code: 'wotr',
   //     latitude: 38.93854526,
   //     longitude: -77.265089
   //   },
   //   {
   //     name: 'Wrangell - St Elias National Park & Preserve',
-  //     parkCode: 'wrst',
+  //     code: 'wrst',
   //     latitude: 61.4182147,
   //     longitude: -142.6028439
   //   },
   //   {
   //     name: 'Yellowstone National Park',
-  //     parkCode: 'yell',
+  //     code: 'yell',
   //     latitude: 44.59824417,
   //     longitude: -110.5471695
   //   },
   //   {
   //     name: 'Yosemite National Park',
-  //     parkCode: 'yose',
+  //     code: 'yose',
   //     latitude: 37.84883288,
   //     longitude: -119.5571873
   //   }
