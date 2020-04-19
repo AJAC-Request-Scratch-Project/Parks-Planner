@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 
-const routes = require('./routes/api');
+const router = require('./routes/api');
 
 const app = express();
 const PORT = 3000; 
@@ -10,9 +10,8 @@ const PORT = 3000;
 // Require in routers here.
 app.use(express.json());
 
-// app.use('/api', routes);
+app.use('/getparks', router);
 
-// might need to check bundle/build route after build folder is built
 app.get('/build/bundle.js', (req, res)=> res.status(200).sendFile(path.resolve(__dirname, '../build/bundle.js')))
 app.get('/', (req, res)=> res.status(200).sendFile(path.resolve(__dirname, '../index.html')));
 app.get('/client/stylesheets/styles.css', (req, res)=> res.status(200).sendFile(path.resolve(__dirname, '../client/stylesheets/styles.css')))
