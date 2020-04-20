@@ -1,113 +1,119 @@
 const axios = require('axios');
 const db = require('../models/parkModels.js');
+require('dotenv').config();
 
 const npsController = {};
 
-const npsAPIKey = 'ZhgoS526AhMD5dmAvob2YIx2hk8XqLGeIG1NgMzF';
+const npsAPIKey = process.env.NPS_API_KEY;
 
-npsController.getParkData = (req, res, next)=>{
-  const getPark = 'SELECT * FROM park';
+npsController.getParkData = (req, res, next) => {
+  const getPark = `SELECT * FROM park;`
 
   db.query(getPark)
-  .then(parksData=>{
-    console.log(parksData.rows)
-    res.locals.parksData = parksData.rows;
-    next();
-  })
-  .catch(err => next('error in getPark middleware'))
-
+    .then(parksData => {
+      res.locals.parksData = parksData.rows;
+      next();
+    })
+    .catch(err => next('error in getPark middleware'))
 }
 
-npsController.getOnePark = (req, res, next)=>{
+npsController.getOnePark = (req, res, next) => {
 
   const url = 'https://developer.nps.gov/api/v1/parks';
-  // const code = req body property that contains code
+  const onePark = req.query.code;
 
   axios.get(url,
     {
       params: {
-        parkCode: 'arch',
+        parkCode: onePark,
         api_key: npsAPIKey,
       }
     })
     .then(parkData => {
-      // ask team what they want from data
+      // Info is a large object from the National Park Service with all of the available information
       let info = parkData.data.data[0];
-      console.log(info)
 
-      res.locals.onePark = info;
+      // parkObj is the object to hl oly the selected data that
+      // will render on the front end, can be adjusted by adding more 
+      // information from "info" above
+      const parkObj = {}
+      parkObj.fullName = info.fullName;
+      parkObj.description = info.description;
+      parkObj.weather = info.weatherInfo;
+      parkObj.images = info.images[0].url;
+
+      // console.log('npsController - parkObj:', parkObj);
+      res.locals.onePark = parkObj;
       next();
     })
     .catch(err => {
       return next('error in getOnePark middleware')
     })
-
 }
 
 module.exports = npsController;
 
 
 
-
 // * the below function was used to create an array of objects due to National Park Service's slow API response...
   // array of objects syntax: [ { name: 'National Park Name, parkCode: 'parkCode', latitude: 12345, longitude: 12345 }]
 // * this was then stored into our SQL database which we send the initial request to instead :-) 
+/*
+const parkCodes = 'anac,appa,arch,badl,bibe,blca,brca,cany,cave,coga,crla,cuva,drto,ever,foth,fofr,gaar,jeff,glba,glac,glec,grba,grsa,gumo,hosp,indu,jeca,jomu,kefj,lavo,lode,maac,maca,mnrr,mora,npnh,jazz,ozar,pefo,redw,romo,seki,thro,viis,whis,whsa,wotr,wrst,yell,yose'
+npsController.getPark = (req, res, next) =>{
+  const url = 'https://developer.nps.gov/api/v1/parks';
 
-// const parkCodes = 'anac,appa,arch,badl,bibe,blca,brca,cany,cave,coga,crla,cuva,drto,ever,foth,fofr,gaar,jeff,glba,glac,glec,grba,grsa,gumo,hosp,indu,jeca,jomu,kefj,lavo,lode,maac,maca,mnrr,mora,npnh,jazz,ozar,pefo,redw,romo,seki,thro,viis,whis,whsa,wotr,wrst,yell,yose'
-// npsController.getPark = (req, res, next) =>{
-//   const url = 'https://developer.nps.gov/api/v1/parks';
+  axios.get(url,
+    {
+      params: {
+        parkCode: parkCodes,
+        api_key: npsAPIKey,
+      }
+    })
+    .then(data => {
+      let coordinates = []
 
-//   axios.get(url,
-//     {
-//       params: {
-//         parkCode: parkCodes,
-//         api_key: npsAPIKey,
-//       }
-//     })
-//     .then(data => {
-//       let coordinates = []
+      for (let el of data.data.data){
+        let parkObj = {}
 
-//       for (let el of data.data.data){
-//         let parkObj = {}
+        parkObj.name = el.fullName;
+        parkObj.parkCode = el.parkCode;
+        parkObj.latitude = parseFloat(el.latitude);
+        parkObj.longitude = parseFloat(el.longitude);
 
-//         parkObj.name = el.fullName;
-//         parkObj.parkCode = el.parkCode;
-//         parkObj.latitude = parseFloat(el.latitude);
-//         parkObj.longitude = parseFloat(el.longitude);
-
-//         coordinates.push(parkObj)
-//       }
-//       console.log(coordinates)
-//       res.locals.coordinates = coordinates;
-//       next();
-//     })
-//     .catch(err => {
-//       return next({
-//         log: err,
-//         message: 'Something went wrong with the get request to NPS.gov/api'
-//       })
-//     })
-// } 
-
+        coordinates.push(parkObj)
+      }
+      console.log(coordinates)
+      res.locals.coordinates = coordinates;
+      next();
+    })
+    .catch(err => {
+      return next({
+        log: err,
+        message: 'Something went wrong with the get request to NPS.gov/api'
+      })
+    })
+} 
+*/
 // * used to load SQL database with NPS response...
 
 // npsController.loadSQL = (req, res, next) => {
   //   const insertPark = 
   //   `INSERT INTO park(name, code, latitude, longitude)
   //   VALUES($1, $2, $3, $4)`
-    
+
   //   for (let el of parksArray){
   //     let park = [ el.name, el.parkCode, el.latitude, el.longitude ]
-  
+
   //     db.query(insertPark, park)
   //     .then(added => {
   //       console.log(added)
   //     })
   //     .catch(err=>console.log(err))
   //   }
-  
+
   // }
-  
+
   // const parksArray = 
   // [
   //   {
