@@ -1,6 +1,5 @@
 import * as types from '../constants/actionTypes';
 import axios from 'axios';
-import thunk from "redux-thunk";
 
 export const toggle = () => ({
     type: types.TOGGLE,
@@ -32,7 +31,7 @@ export const parkInfo = (parkData) => ({
     payload: parkData
 });
 // Fetch request for specific park information
-export const fetchParkInfo = (parkCode) => {
+export const fetchParkInfo = parkCode => {
     return (dispatch) => {
         return axios.get('/getparks/park', parkCode)
             .then((parkData) => {
@@ -42,3 +41,30 @@ export const fetchParkInfo = (parkCode) => {
     }
 }
 // ---------------------------------------------------------------
+
+// Actions for sign-up/log-in:
+export const signUp = signUpInfo => {
+    return (dispatch) => {
+        return axios.post('/signup', signUpInfo)
+            .then(res => {
+                // console.log('Sign-up successful.', 'res.data in actions.js:', res.data[0])
+                dispatch(LOGGED_IN_USER(res.data[0]))
+            })
+    }
+}
+
+export const LOGGED_IN_USER = loggedInUserData => ({
+    type: types.LOGGED_IN_USER,
+    payload: loggedInUserData,
+});
+
+export const logIn = logInInfo => {
+    return (dispatch) => {
+        // console.log("logInInfo in actions.js:", logInInfo);
+        return axios.get('/login', { params: { info: logInInfo } })
+            .then(res => {
+                // console.log('log-in res in actions.js:', res.data.username);
+                dispatch(LOGGED_IN_USER(res.data.username));
+            })
+    }
+}
