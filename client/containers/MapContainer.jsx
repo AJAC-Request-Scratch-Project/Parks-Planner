@@ -72,7 +72,7 @@ class MapContainer extends Component {
       return (
         <div
           id="map-container"
-          style={{ position: 'relative', width: '50%', height: '60vh', paddingBottom: 5 }}
+          style={{ position: 'relative', width: '50%', height: '60vh' }}
         >
           <Map
             id="map"
@@ -95,5 +95,5 @@ class MapContainer extends Component {
 const Connected = connect(mapStateToProps, mapDispatchToProps)(MapContainer);
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyCIo2nyEB-966331r5Ux-zO_lKIm7eW5fU'
+  apiKey: process.env.MAPS_API_KEY
 })(Connected) 

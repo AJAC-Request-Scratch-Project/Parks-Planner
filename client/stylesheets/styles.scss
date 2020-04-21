@@ -1,13 +1,16 @@
 $CheriesSage: #b6c5b8;
 $Baloo: 'Baloo Bhaina 2', cursive;
 
+html {
+  background:  $CheriesSage;
+}
+
 body {
   box-sizing: border-box;
   font-family: $Baloo;
   // margin: 2;
   padding: 0;
   color: #014421;
-  background-color: $CheriesSage;
 }
 
 h1 {
@@ -21,7 +24,6 @@ h1 {
 
 h2 {
   font-size: 2em;
-  text-decoration: underline;
   color: #2f4f4f;
   text-shadow: 2px 2px #f0ead6;
 }

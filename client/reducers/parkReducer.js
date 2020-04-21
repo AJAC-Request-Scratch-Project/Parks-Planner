@@ -1,9 +1,9 @@
 import * as types from '../constants/actionTypes.js';
-import { bindActionCreators } from 'redux';
-import thunk from 'redux-thunk'
-import { connect } from 'react-redux';
+
 
 const initialState = {
+  loggedInUser: '',
+
   // State for all Markers
   toggle: false,
   parksList: [],
@@ -18,12 +18,19 @@ const initialState = {
 const parkReducer = (state = initialState, action) => {
 
   switch (action.type) {
+    case types.LOGGED_IN_USER:
+      // console.log('Triggered LOGGED_IN_USER in reducer.')
+      return {
+        ...state,
+        loggedInUser: action.payload,
+      };
+
     case types.TOGGLE:
       let toggle = !state.toggle;
 
       return {
         ...state,
-        toggle
+        toggle,
       };
 
     case types.MARKER:
