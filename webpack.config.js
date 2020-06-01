@@ -15,7 +15,9 @@ module.exports = {
     publicPath: '/build/',
     // contentBase: path.resolve(__dirname, 'build'),
     proxy: {
+      '/login': 'http://localhost:3000',
       '/getparks': 'http://localhost:3000',
+      '/signup': 'http://localhost:3000',
     },
   },
   module: {
