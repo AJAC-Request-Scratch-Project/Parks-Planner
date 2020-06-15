@@ -13,7 +13,7 @@ ParksPlanner is a planning assistant application to help travelers select and co
 * Click on a map marker to view National Park details
 
 ### Testing
-Run `npm test` in the terminal. This will initialize the testing suite. Jest is used to run unit tests on the internal library and Enzyme is used alongside Jest to run integration testing on the front end code.
+Run `npm test` in the terminal. This will initialize the testing suite. Enzyme is used alongside Jest to run integration testing on the front end code.
 
 ### Authors
 Alan Lee
