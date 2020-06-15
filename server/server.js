@@ -53,7 +53,6 @@ app.use('/', (err, req, res, next)=> {
   return res.status(400).send(err);
 })
 
-
 // Start server.
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
