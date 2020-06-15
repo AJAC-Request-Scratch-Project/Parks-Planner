@@ -1,7 +1,7 @@
 <img src='/assets/demo.gif'>
 
 ### What is ParksPlanner
-ParksPlanner is an planning assistant application to help travelers select and compare U.S. National Parks.
+ParksPlanner is a planning assistant application to help travelers select and compare U.S. National Parks.
 
 ### Getting Started
 1. `npm i` to install dependencies
@@ -18,7 +18,7 @@ Run `npm test` in the terminal. This will initialize the testing suite. Jest is 
 ### Authors
 Alan Lee
 
-Alexander Infate 
+Alexander Infante 
 
 Cherie Zhong
 
