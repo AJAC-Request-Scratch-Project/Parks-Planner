@@ -18,7 +18,7 @@ Run `npm test` in the terminal. This will initialize the testing suite. Jest is 
 ### Authors
 Alan Lee
 
-Alexander Infate 
+Alexander Infante 
 
 Cherie Zhong
 
