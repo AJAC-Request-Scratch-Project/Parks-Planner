@@ -1,4 +1,4 @@
-<img src='/assets/parksplanner.gif'>
+<img src='/assets/demo.gif'>
 
 ### What is ParksPlanner
 ParksPlanner is an planning assistant application to help travelers select and compare U.S. National Parks.
