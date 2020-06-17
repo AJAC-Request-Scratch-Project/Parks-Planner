@@ -1,29 +1,25 @@
-# Parks-Planner
+<img src='/assets/demo.gif'>
 
-/******  APIs *******/
-* Used Google Maps API and goole-maps-react to render the Maps component. 
-  * More info: https://www.npmjs.com/package/google-maps-react
-  * You will have to get a personal Google API for this app. Read about how to get it here: https://developers.google.com/maps/documentation/javascript/get-api-key
+### What is ParksPlanner
+ParksPlanner is a planning assistant application to help travelers select and compare U.S. National Parks.
 
-* Used NPS.gov API to get Nationl Parks info from NPS.
-  * You'll have to get a personal NPS API here: https://www.nps.gov/subjects/developer/get-started.htm
+### Getting Started
+1. `npm i` to install dependencies
+1. `npm start` or `npm run dev` to start application in production or development mode respectively.
 
+### How to Use
+* Click and drag to pan map
+* Scroll up to zoom in and scroll down to zoom out on map
+* Click on a map marker to view National Park details
 
-/****** Google Maps component *******/
-* Rendered <Maps/> within <MapContainer/>.
-* Note that <Maps/> has a default prop "google".
-* Exported the component within GoogleApiWrapper.
+### Testing
+Run `npm test` in the terminal. This will initialize the testing suite. Enzyme is used alongside Jest to run integration testing on the front end code.
 
+### Authors
+Alan Lee
 
-/****** Get All the Park Info *******/
-* [ Base URL: developer.nps.gov/api/v1 ]
-* Send GET request to /parks
-  * Be careful, if you don't limit the number of results, NPS.gov's response can be very slow.
-* Save parks info in PostgreSQL.
-* Upon page load, retrieve the parks info from database and save to Redux store.
+Alexander Infante 
 
+Cherie Zhong
 
-/****** Generate Markers on the Map *******/
-* Each marker is generated from a "park" in parksList array (stored in state (Redux store)).
-* Each marker has an onClick listener that triggers a GET request to server with the (single) park code in request query.
-* Upon getting the response from NPS.gov, a <Park/> component is rendered by <App/>.
+Jordan Deleon

@@ -8,7 +8,8 @@ import { connect } from 'react-redux';
 // It can be either a raw object or a google.maps.LatLng() instance.
 const mapStyles = {
   width: '100%',
-  height: '70%'
+  height: '100%',
+  boxShadow: '2px 2px 2px rgba(0, 0, 0, 0.411)'
 }
 const mapStateToProps = state => ({
   parksList: state.park.parksList,
@@ -72,7 +73,7 @@ class MapContainer extends Component {
       return (
         <div
           id="map-container"
-          style={{ position: 'relative', width: '50%', height: '60vh' }}
+          style={{ position: 'relative', width: '75%', height: '60vh', marginBottom: '0' }}
         >
           <Map
             id="map"

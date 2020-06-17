@@ -13,8 +13,6 @@ const mapStateToProps = state => ({
 
 
 // pull out the pieces of state that we want to render for specific park data
-
-
 class Park extends Component {
   render() {
     return (

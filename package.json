@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "build": "webpack",
-    "dev": "NODE_ENV=development nodemon server/server.js & webpack-dev-server --open"
+    "dev": "NODE_ENV=development nodemon server/server.js & webpack-dev-server --open",
+    "test": "jest --verbose"
   },
   "repository": {
     "type": "git",
@@ -16,11 +17,15 @@
   "license": "ISC",
   "homepage": "",
   "dependencies": {
+    "@types/jest": "^26.0.0",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^1.7.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16.1": "^1.6.2",
     "express": "^4.17.1",
     "google-maps-react": "^2.0.2",
+    "jest": "^26.0.1",
     "pg": "^8.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -33,8 +38,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.2",
     "nodemon": "^2.0.3",
